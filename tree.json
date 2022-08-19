@@ -124,6 +124,12 @@
             "children": []
         },
         {
+            "name": "DeepTox: Toxicity Prediction Using Deep Learning",
+            "url": "https://www.researchgate.net/publication/285593237_DeepTox_Toxicity_Prediction_Using_Deep_Learning",
+            "citation_count": 483,
+            "children": []
+        },
+        {
             "name": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning",
             "url": "https://www.researchgate.net/publication/277959098_Dropout_as_a_Bayesian_Approximation_Representing_Model_Uncertainty_in_Deep_Learning",
             "citation_count": 2191,
@@ -214,6 +220,12 @@
             "children": []
         },
         {
+            "name": "On the importance of initialization and momentum in deep learning",
+            "url": "https://www.researchgate.net/publication/286271944_On_the_importance_of_initialization_and_momentum_in_deep_learning",
+            "citation_count": 0,
+            "children": []
+        },
+        {
             "name": "Opportunities and Challenges for Machine Learning in Materials Science",
             "url": "https://www.researchgate.net/publication/341198112_Opportunities_and_Challenges_for_Machine_Learning_in_Materials_Science",
             "citation_count": 59,
@@ -283,6 +295,12 @@
             "name": "Towards Image-based Cancer Cell Lines Authentication Using Deep Neural Networks",
             "url": "https://www.researchgate.net/publication/345918419_Towards_Image-based_Cancer_Cell_Lines_Authentication_Using_Deep_Neural_Networks",
             "citation_count": 7,
+            "children": []
+        },
+        {
+            "name": "Towards Open Set Deep Networks",
+            "url": "https://www.researchgate.net/publication/284218785_Towards_Open_Set_Deep_Networks",
+            "citation_count": 44,
             "children": []
         },
         {

@@ -1,5 +1,5 @@
 from collections import deque
-from polls.queries import Queries
+from articles.queries import Queries
 from .queries import Queries
 
 class Export:
