@@ -1,42 +1,37 @@
 import json
 from collections import deque
 from articles import Database
+from articles.tree_element import TreeElement
 
 
-def construct_tree():
+def construct_tree(entry):
     unique_article_titles = set()
     queue = deque()
-
-    root = Database.get_root_object()
+    root = TreeElement(name=entry.title, url=entry.url, date=entry.date, publisher=entry.publisher, citation_count=entry.citation_count, references_count=entry.reference_count, children=[])
     queue.append(root)
-
     while queue:
         current = queue.popleft()
         if current.name not in unique_article_titles:
+            add_children(current)
             unique_article_titles.add(current.name)
-            add_children(current, unique_article_titles)
-            for child in current.children:
-                queue.append(child)
-    print(unique_article_titles)
+        for child in current.children:
+            queue.append(child)
     return root
 
-# dac mu dzialac przez 5 sekund i znalezc petle
-def add_children(node, unique_articles):
+
+def add_children(node):
     unique_children = []
     for child in Database.get_children_one_level(node):
-        if child.name not in unique_articles:
-            unique_children.append(child)
-            unique_articles.add(child.name)
-
+        unique_children.append(child)
     node.children = unique_children
-    # node.children = Database.get_children_one_level(node)
 
 
-def export_to_javascript():
-    root = construct_tree()
-    result_json = "root = "
+def export_to_javascript(entry):
+    root = construct_tree(entry)
+    result_json = '{"root": '
     result_json += root.toJSON()
-    with open("tree.js", "w") as outfile:
+    result_json += "}"
+    with open("tree.json", "w") as outfile:
         outfile.write(result_json)
 
 

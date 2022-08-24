@@ -2,8 +2,10 @@ import psycopg2
 
 
 from articles import paths
-from articles import TreeElement
+from articles.tree_element import TreeElement
 
+
+from .models import Article, Articlecitation, Articlereference
 
 def connect_to_database():
     con = psycopg2.connect(database=paths.DATABASE, user=paths.USER,
@@ -96,15 +98,15 @@ def get_elements_from_database_with_citations():
 
 def get_root_object():
     root = get_elements_from_database_with_citations()[0]
-    tree_element = TreeElement(name=root[0], url=root[1], children=[])
+    tree_element = TreeElement(name=root[0], url=root[1], date=root[2], publisher=root[3], citation_count=root[4], references_count=root[5], children=[])
     return tree_element
 
 
 def get_children_one_level(node):
-    children_list_of_strings = Database.get_citations_with_main_url(node.url)
+    children_list_of_strings = get_citations_with_main_url(node.url)
     list_of_children_as_objects = []
     for element in children_list_of_strings:
-        list_of_children_as_objects.append(TreeElement(name=element[0], url=element[1], children=[]))
+        list_of_children_as_objects.append(TreeElement(name=element[0], url=element[1], date=element[2], publisher=element[3], citation_count=element[4], references_count=element[5], children=[]))
     return list_of_children_as_objects
 
 
@@ -113,6 +115,7 @@ def get_citations_with_main_url(url):
     cur.execute(
         "select distinct * from article,articlecitation where article.url = citation_article_url and "
         "articlecitation.main_article_url = (%(url)s) and article.citation_count is not null", {'url': url})
+
     return cur.fetchall()
 
 
